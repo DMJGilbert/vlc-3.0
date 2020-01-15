@@ -211,6 +211,8 @@ void input_ControlVarInit ( input_thread_t *p_input )
     var_Create( p_input, "bit-rate", VLC_VAR_INTEGER );
     var_Create( p_input, "sample-rate", VLC_VAR_INTEGER );
 
+    var_Create( p_input, "input-record-path", VLC_VAR_STRING | VLC_VAR_DOINHERIT );
+
     /* Special "intf-event" variable. */
     var_Create( p_input, "intf-event", VLC_VAR_INTEGER );
 

@@ -1936,6 +1936,29 @@ void libvlc_media_player_next_frame( libvlc_media_player_t *p_mi )
     }
 }
 
+void libvlc_media_player_record_start( libvlc_media_player_t *p_mi, const char* psz_filename )
+{
+    input_thread_t *p_input_thread = libvlc_get_input_thread ( p_mi );
+    if( p_input_thread != NULL )
+    {
+        var_SetString( p_input_thread, "input-record-path", psz_filename );
+        var_SetString( p_input_thread, "record-file", psz_filename );
+        var_SetBool( p_input_thread, "record", true );
+        var_TriggerCallback( p_input_thread, "record" );
+        vlc_object_release( p_input_thread );
+    }
+}
+
+void libvlc_media_player_record_stop( libvlc_media_player_t *p_mi )
+{
+    input_thread_t *p_input_thread = libvlc_get_input_thread ( p_mi );
+    if( p_input_thread != NULL )
+    {
+        var_SetBool( p_input_thread, "record", false );
+        vlc_object_release( p_input_thread );
+	}
+}
+
 /**
  * Private lookup table to get subpicture alignment flag values corresponding
  * to a libvlc_position_t enumerated value.

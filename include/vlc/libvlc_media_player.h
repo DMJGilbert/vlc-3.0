@@ -977,6 +977,24 @@ LIBVLC_API int libvlc_media_player_program_scrambled( libvlc_media_player_t *p_m
 LIBVLC_API void libvlc_media_player_next_frame( libvlc_media_player_t *p_mi );
 
 /**
+* Start recording the current media (if supported)
+*
+* \param p_mi media player
+* \param psz_filename name of the file to save the media to, not including any file extension,
+*                     or NULL if vlc should generate the filename automatically
+* \version LibVLC 2.1.0 or later
+*/
+LIBVLC_API void libvlc_media_player_record_start( libvlc_media_player_t *p_mi, const char *psz_filename );
+
+/**
+* Stop recording the current media (if supported)
+*
+* \param p_mi media player
+* \version LibVLC 2.1.0 or later
+*/
+LIBVLC_API void libvlc_media_player_record_stop( libvlc_media_player_t *p_mi );
+
+/**
  * Navigate through DVD Menu
  *
  * \param p_mi the Media Player
